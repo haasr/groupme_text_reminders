@@ -109,7 +109,7 @@ class TaskScheduler:
         def remove(self, task):
             self.task_list.remove(task)
 
-        
+
         def remove_all(self):
             try: # May fail if it is being iterated over.
                 self.task_list.clear()
@@ -158,15 +158,15 @@ class TaskScheduler:
                 for t in self.iterable_task_list:
                     if t.notif_time == now:
                         pub_thread = Thread(target=self.pub_notification, args=(t.tts(), t.phone_number))
-                        tts_thread = Thread(target=self.read_task, args=(t.tts(),))
+                        #tts_thread = Thread(target=self.read_task, args=(t.tts(),))
 
                         pub_thread.start() # Encrypt and publish to pub/tasks
-                        tts_thread.start() # Read aloud over using simple_google_tts
-                        
+                        #tts_thread.start() # Read aloud over using simple_google_tts
+
                         self.task_list.remove(t)
 
                 self.iterable_task_list.clear()
-                sleep(30)
+                sleep(13)
 
     instance = None
 
